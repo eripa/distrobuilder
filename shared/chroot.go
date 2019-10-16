@@ -105,6 +105,7 @@ func moveMounts(mounts []chrootMount) error {
 			}
 		}
 
+		syscall.Sync()
 		// Move the mount to its destination
 		err = syscall.Mount(tmpSource, target, "", syscall.MS_MOVE, "")
 		if err != nil {
@@ -152,6 +153,7 @@ func killChrootProcesses(rootfs string) error {
 
 // SetupChroot sets up mount and files, a reverter and then chroots for you
 func SetupChroot(rootfs string, envs DefinitionEnv) (func() error, error) {
+	syscall.Sync()
 	// Mount the rootfs
 	err := syscall.Mount(rootfs, rootfs, "", syscall.MS_BIND, "")
 	if err != nil {
