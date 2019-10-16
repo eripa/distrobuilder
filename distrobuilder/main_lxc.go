@@ -7,7 +7,7 @@ import (
 
 	"github.com/lxc/distrobuilder/generators"
 	"github.com/lxc/distrobuilder/image"
-	"github.com/lxc/distrobuilder/shared"
+	"github.com/eripa/distrobuilder/shared"
 )
 
 type cmdLXC struct {
